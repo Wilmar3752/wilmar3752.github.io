@@ -6,6 +6,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 import remarkReadingTime from "./src/plugins/remark-reading-time.mjs";
 import preact from "@astrojs/preact";
 import Icons from "unplugin-icons/vite";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const rehypePrettyCodeOptions = {
   theme: "dracula",
@@ -34,8 +36,8 @@ export default defineConfig({
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
-    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
-    remarkPlugins: [remarkReadingTime],
+    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions], rehypeKatex],
+    remarkPlugins: [remarkReadingTime, remarkMath],
   },
   experimental: {
     assets: true,
