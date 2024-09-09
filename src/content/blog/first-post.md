@@ -2,7 +2,7 @@
 title: "The Optimal Bayes Classifier: 1-d Case"
 description: "Lorem ipsum dolor sit amet"
 featured: true
-#seriesId: first-series
+seriesId: first-series
 orderInSeries: 1
 pubDate: "Nov 13 2023"
 tags:
