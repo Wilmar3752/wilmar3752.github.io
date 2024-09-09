@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+## example sections
+src/content/blog/second-post.md
+src/content/blog/third-post.md
+src/content/blog/fourth-post.md
+src/content/blog/markdown-style-guide.md
+src/content/blog/using-mdx.md
+src/content/series/first-series.md
