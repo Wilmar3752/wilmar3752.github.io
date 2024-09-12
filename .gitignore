@@ -19,3 +19,8 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+src/content/blog/fourth-post.md
+src/content/blog/markdown-style-guide.md
+src/content/blog/second-post.md
+src/content/blog/using-mdx.md

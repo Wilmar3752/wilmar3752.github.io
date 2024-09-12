@@ -4,6 +4,7 @@ description: "Lorem ipsum dolor sit amet"
 featured: true
 seriesId: first-series
 orderInSeries: 1
+draft: true
 pubDate: "Nov 13 2023"
 tags:
   - Bayes Classifier
