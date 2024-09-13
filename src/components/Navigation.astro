@@ -1,14 +1,9 @@
----
-// src/components/Navigation.astro
----
-
 <style>
   nav {
     padding: 1rem;
-    position: fixed;
     top: 0;
     right:0;
-    transform: translateX(-180%); 
+    transform: translateX(0); 
     z-index: 1000;
   }
 
@@ -16,15 +11,17 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos de la lista estén en fila */
+    justify-content: flex-end; /* Alinea los elementos de la lista a la derecha */
   }
 
   nav li {
-    display: inline;
     margin-right: 20px;
   }
 
   nav a {
-    color: black;
+    color: white;
     text-decoration: none;
     transition: color 0.3s ease;
   }
@@ -32,13 +29,30 @@
   nav a:hover {
     color: #ccc;
   }
+
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column; /* Cambia la dirección de los elementos de la lista a columna */
+      align-items: flex-end; /* Alinea los elementos de la lista al final (derecha) */
+    }
+
+    nav {
+      padding: 0.5rem; /* Reduce el padding en pantallas pequeñas */
+      transform: translateX(0); /* Asegura que el menú esté completamente visible */
+    }
+
+    nav li {
+      margin-right: 0; /* Elimina el margen derecho en los elementos de la lista */
+      margin-bottom: 10px; /* Añade un margen inferior para separar los elementos */
+    }
+  }
 </style>
 
-<nav>
+<nav class="bg-slate-100 dark:bg-slate-900">
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/" class="text-slate-700 dark:text-white">Home</a></li>
+    <li><a href="/about/" class="text-slate-700 dark:text-white">About</a></li>
+    <li><a href="/blog/" class="text-slate-700 dark:text-white">Blog</a></li>
   </ul>
 </nav>
-
