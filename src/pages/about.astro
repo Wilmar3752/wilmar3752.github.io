@@ -3,16 +3,35 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
+<style>
+  main {
+    font-size: 20px; /* Aumenta el tamaño de la letra */
+    line-height: 2; /* Aumenta el interlineado */
+  }
+</style>
 
 <BaseLayout title="About">
   <main>
     <h1 class="text-black dark:text-white pb-10 text-4xl">About Me</h1>
     <p>Welcome to my blog! I'm Wilmar Sepulveda Herera, a statistician with experience in R, Python, Git, Docker, and AWS. As an enthusiastic learner, I am passionate about MLOPS, data engineering, and research.</p>
+    
+    <p>
     I am from
+
     <a href="https://es.wikipedia.org/wiki/Jamund%C3%AD" target="_blank" rel="noopener noreferrer">
       Jamundi - Valle
     </a>
-    and currently living on Manizales
+    and currently live on   <a href="https://es.wikipedia.org/wiki/Manizales" target="_blank" rel="noopener noreferrer">
+      Manizales - Caldas
+    </a>
+    with my awesome girlfriend <a href="https://www.linkedin.com/in/mayra-alejandra-mej%C3%ADa-mart%C3%ADnez-3abb81178/" target="_blank" rel="noopener noreferrer">
+      Mayra.
+    </p>
+    <p>
+     I start to study Statistics in 2011 in the Universidad del Valle and get my undergraduate degree en 2017
+
+    </p>
+    </a>
     </div>
   </main>
 </BaseLayout>
