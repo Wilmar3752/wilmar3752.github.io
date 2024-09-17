@@ -1,4 +1,4 @@
-export const SITE_NAME = "Data Science theory and practice";
+export const SITE_NAME = "Not Just Statistics";
 export const SITE_TITLE = "Wilmar Sepulveda";
 export const SITE_DESCRIPTION =
   "Wilmar Sepulveda";
