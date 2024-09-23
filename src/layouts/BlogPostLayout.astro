@@ -6,6 +6,10 @@ import TableOfContent from "../components/TableOfContent.astro";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { Image } from "astro:assets";
 import SeriesCard from "../components/SeriesCard.astro";
+import rehypeKatex from 'rehype-katex'
+import rehypeStringify from 'rehype-stringify'
+import remarkMath from 'remark-math'
+import remarkParse from 'remark-parse'
 
 type Blog = CollectionEntry<"blog">["data"];
 
@@ -36,12 +40,14 @@ const {
 
 const series = (await getCollection("series")).find((s) => s.data.id === seriesId);
 ---
+
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-  integrity="sha384-..."
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+  integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
   crossorigin="anonymous"
 />
+
 <BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
   <div
     class="prose prose-slate max-w-none prose-headings:scroll-my-20 prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-lg dark:prose-invert"
