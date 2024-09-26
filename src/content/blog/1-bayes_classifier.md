@@ -12,36 +12,17 @@ tags:
   - R
   - Python
 ---
+When we speak about classification models, we are looking for the best model, well, the Bayes Classifier is the best classificator in the world, it uses all information about the probability distribution to predict between two classes, the most probably. In this case, we assume that $X$ and $Y$ have joint distribution, called $P_{X,Y}$ and $\{{X_i, Y_i}\}_{i=1}^{n}$ is a random sample of $P_{X,Y}$, here train and test data are independent draws from the same distribution.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+Supose that you want classify a test subject if have or not stress based on brain activity, so we have.
 
-Esto es una ecuación en línea $$E=mc^2$$ y esto es una 4
+- $X$: "Average brain activity in Amygdala".
+- $Y$: 1 if subject have strees (red) 0 if not (green).
 
-$$
-x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
-$$ 
+![Image1](~/assets/blog_images/example1.png)
 
+**figure 1** Example of stress classification model
 
-$$
-\theta = \frac{x}{y}
-$$
+As show in figure 1, higest values of $Y$ are correlated with stress, in this example, our test subjet is classificated as stress. If you notice, we have a mixture of two probability distributions, say $P(Y=1 | X) \sim $ distribution 1 and $P(Y=0 | X) \sim $ distribution 2
 
-$$
-\sum_{n=1}^{\infty} \frac{1}{n} = \infty
-$$
-
-$$
-\begin{equation}
-E = mc^2
-\end{equation}
-$$
-
-$$
-\begin{equation}
-E = mc^2
-\end{equation}
-$$
-
-
-
-
+![Image1](~/assets/blog_images/example2.png)
