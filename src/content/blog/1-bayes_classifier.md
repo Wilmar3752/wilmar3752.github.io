@@ -1,7 +1,7 @@
 ---
 title: "The Optimal Bayes Classifier"
-description: "Lorem ipsum dolor sit amet"
-featured: false
+description: "Theory and practice"
+featured: True
 orderInSeries: 1
 draft: true
 pubDate: "Nov 13 2023"

@@ -1,15 +1,14 @@
 ---
 import MdiTwitter from "~icons/mdi/linkedin";
 import MdiGithub from "~icons/mdi/github";
-import MdiRss from "~icons/mdi/rss";
 import PostsList from "../components/PostsList.astro";
+import LinkButton from "../components/LinkButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import SeriesList from "../components/SeriesList.astro";
+import { WilmarImage } from "../components/WimarImage";
 import { TWITTER_HANDLE, GITHUB_HANDLE } from "../consts";
-import Navigation from "../components/Navigation.astro";
 
-const ProfilePicture = "wilmar.jpeg";
 const posts = await getCollection("blog");
 const featuredPosts = posts.filter((post) => post.data.featured);
 const featuredSeries = (await getCollection("series")).filter((s) => s.data.featured);
@@ -17,22 +16,22 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
 
 <BaseLayout title="Home">
   <main>
-    <div class="space-y-10">
-      <div class="space-y-4">
-        <div class="flex flex-col md:flex-row items-start space-x-4 mb-6">
-          <div class="md:w-2/3">
-            <h1 class="text-4xl text-black dark:text-white font-black">
-              Hello there! I'm Wilmar Sepulveda Herera
-            </h1>
-          </div>
-          <div class="md:w-1/4">
-            <img src={ProfilePicture} alt="Wilmar Sepulveda Herera" class="rounded-full w-32 h-32 object-cover" />
-          </div>
-        </div>
+    <section id="hero">
+      <div class="flex flex-1 flex-col sm:pr-6">
+        <h1>👋 Hello!</h1>
         <p>
-          Welcome to my blog! I'm a statistician with experience in <span class="font-black">R</span>, <span class="font-black">Python</span>, <span class="font-black">Git</span>, <span class="font-black">Docker</span>, and <span class="font-black">AWS</span>. As an enthusiastic learner, I am passionate about MLOPS, data engineering, and research.
+          <span class="text-2xl">I am <strong>Wilmar</strong></span>,
+          Welcome to my blog! I am from Colombia 🇨🇴. I'm a statistician with experience in 
+          <span class="font-black">R</span>, 
+          <span class="font-black">Python</span>, 
+          <span class="font-black">Git</span>, 
+          <span class="font-black">Docker</span>, 
+          and <span class="font-black">AWS</span>. As an enthusiastic learner, I am passionate about MLOps, data engineering, and research. 
+          I also serve as the Data Scientist Leader at R5, an insurtech company, where I have developed machine learning models for the insurance and credit sectors.
+          
         </p>
-        <div class="space-x-1">
+        <div class="social-wrapper">
+          <div class="social-links">Social Links:</div>
           <a href={TWITTER_HANDLE} target="_blank" class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700">
             <MdiTwitter />
             <span>LinkedIn</span>
@@ -41,15 +40,23 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
             <MdiGithub />
             <span>GitHub</span>
           </a>
-          <a href="/rss.xml" target="_blank" class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700">
-            <MdiRss />
-            <span>RSS</span>
-          </a>
         </div>
+        <p>
+          Read more about me on the
+          <LinkButton
+            className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
+            href="/about"
+          >
+            About page
+          </LinkButton>
+        </p>
       </div>
+      <WilmarImage />
+    </section>
+
       {featuredPosts.length > 0 && (
         <div class="space-y-5">
-          <h1 class="text-3xl text-black dark:text-white">Featured Posts</h1>
+          <h1 class="text-3xl text-black dark:text-white">📜 Featured Posts</h1>
           <PostsList posts={featuredPosts} />
         </div>
       )}
@@ -62,3 +69,26 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
     </div>
   </main>
 </BaseLayout>
+
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply flex sm:flex-row sm:pb-12 sm:pt-12 flex-col items-end pb-12 pt-12;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  } 
+</style>
