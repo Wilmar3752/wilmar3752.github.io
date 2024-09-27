@@ -6,6 +6,7 @@ import TableOfContent from "../components/TableOfContent.astro";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { Image } from "astro:assets";
 import SeriesCard from "../components/SeriesCard.astro";
+import PostComments from "../components/PostComments.astro";
 import rehypeKatex from 'rehype-katex'
 import rehypeStringify from 'rehype-stringify'
 import remarkMath from 'remark-math'
@@ -108,7 +109,9 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
           </nav>
         )
       }
+
     </div>
+    <PostComments />
   </div>
 </BaseLayout>
 
