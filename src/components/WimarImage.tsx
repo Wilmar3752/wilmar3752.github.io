@@ -4,7 +4,7 @@ export const WilmarImage = () => {
         <div className="animate-spin-slow  absolute -top-40 -bottom-40 left-10 right-10 bg-gradient-to-r from-transparent via-white/90 to-transparent"></div>
         <div className="relative bg-[#ffffff] rounded-[10px] overflow-hidden sm:aspect-[9/12] aspect-square">
           <img
-            src="src/assets/wilmar.jpeg"
+            src="assets/wilmar.jpeg"
             height="300px"
             width="250px"
             alt="Wilmar's Image"
