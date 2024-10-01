@@ -4,7 +4,7 @@ description: "Theory and practice"
 featured: True
 orderInSeries: 1
 draft: true
-pubDate: "Nov 13 2023"
+pubDate: "Oct 01 2024"
 tags:
   - Probability
   - Bayes Classifier
