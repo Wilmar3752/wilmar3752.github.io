@@ -73,12 +73,51 @@ $$
 \end{equation}
 $$
 
+
+
 ## Example
 
 Suppose that, in the stress classification case, we khow that:
 - $Y \sim Berniolli(\theta = 0.3)$
 - $X|Y=0 \sim Normal(\mu_0 = 5, \sigma_0 =1 )$ 
 - $X|Y=1 \sim Normal(\mu_1 = 7, \sigma_1 =1 )$ 
+
+### The classifier
+In this case, the formula to equation 3 is.
+
+$$
+f(X) = \argmax_{Y=y}\frac{1}{\sigma_y\sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{x-\mu_y}{\sigma_y}\right)^2\right) \theta^{y}(1-\theta)^{1-y}; \text{  } y=0,1
+$$
+If one test subject has X=6 in his brain activity, you can replace the given values in the classificator and get $\hat{y} = 0$, i.e my algorithm says that he has'nt stress
+
+### Decision Boundary
+
+$$
+\frac{\frac{1}{\sigma_1\sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{x-\mu_1}{\sigma_1}\right)^2\right)}{\frac{1}{\sigma_0\sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{x-\mu_0}{\sigma_0}\right)^2\right)} = 1
+$$
+$$
+\frac{ \exp\left(-\frac{1}{2}\left(\frac{x-\mu_y}{\sigma}\right)^2\right)}{\exp\left(-\frac{1}{2}\left(\frac{x-\mu_y}{\sigma}\right)^2\right)} = 1
+$$
+
+$$
+\exp\left(-\frac{1}{2}\left(\frac{x-\mu_1}{\sigma}\right)^2  +\frac{1}{2}\left(\frac{x-\mu_0}{\sigma}\right)^2\right ) = 1
+$$
+
+$$
+\exp\left(-\frac{1}{2}\left(\frac{x-\mu_1}{\sigma}\right)^2  +\frac{1}{2}\left(\frac{x-\mu_0}{\sigma}\right)^2\right ) = 1
+$$
+
+$$
+\frac{1}{2\sigma^{2}}\left(\left(x-\mu_0\right)^2  - \left({x-\mu_1}\right)^2\right ) = 0
+$$
+
+$$
+\left(\left(x-\mu_0\right)^2  - \left({x-\mu_1}\right)^2\right ) = 0
+$$
+
+$$
+\left(x^2-2\mu_0x + \mu_0^2-x^2 + 2\mu_1x - \mu_1^2 \right ) = 0
+$$
 
 ```r
 theta <- 0.9
