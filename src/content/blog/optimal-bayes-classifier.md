@@ -5,6 +5,7 @@ featured: True
 orderInSeries: 1
 draft: true
 pubDate: "Oct 01 2024"
+cover: "~/assets/blog_images/simulation.png"
 tags:
   - Probability
   - Bayes Classifier
@@ -201,5 +202,8 @@ plot(x=seq(-0, 10, by=0.1), y=ygx(y=1, seq(-0, 10, by=0.1)), type='l',
 points(x=seq(-0, 10, by=0.1), y=ygx(y=0, seq(-0, 10, by=0.1)), type='l', col="green")
 abline(v=result$par, lty=2, col="blue")
 
-# Add a legend
-legend("topleft", legend=c("y=
+# Agrega la leyenda
+legend("topleft", legend=c("y=1", "y=0", "Bayes decision boundary"), 
+       col=c("red", "green", "blue"), lty=c(1, 1, 2), 
+       title="Color guide")
+
