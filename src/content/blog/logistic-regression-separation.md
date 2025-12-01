@@ -3,7 +3,7 @@ title: "El Problema de Separación en la Regresión Logística"
 description: "Causas, consecuencias y soluciones al problema de separación completa y cuasicompleta"
 featured: True
 draft: true
-pubDate: "Nov 20 2024"
+pubDate: "Dec 01 2025"
 tags:
   - Logistic Regression
   - Maximum Likelihood
