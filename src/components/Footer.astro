@@ -3,45 +3,114 @@ import MdiTwitter from "~icons/mdi/twitter";
 import MdiGithub from "~icons/mdi/github";
 import MdiRss from "~icons/mdi/rss";
 import MdiSitemap from "~icons/mdi/sitemap";
+import MdiEmail from "~icons/mdi/email";
 import { GITHUB_HANDLE, TWITTER_HANDLE } from "../consts";
 
 const today = new Date();
 ---
 
-<footer class="flex items-center justify-between py-5">
-  <p>&copy; {today.getFullYear()} Wilmar Sepulveda</p>
-  <div class="flex items-center space-x-1">
-    <a
-      href={TWITTER_HANDLE}
-      target="_blank"
-      class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
-    >
-      <MdiTwitter />
-      <span class="sr-only">Linkedin</span>
-    </a>
-    <a
-      href={GITHUB_HANDLE}
-      target="_blank"
-      class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
-    >
-      <MdiGithub />
-      <span class="sr-only">Github</span>
-    </a>
-    <a
-      href="/rss.xml"
-      target="_blank"
-      class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
-    >
-      <MdiRss />
-      <span class="sr-only">RSS</span>
-    </a>
-    <a
-      href="/sitemap-index.xml"
-      target="_blank"
-      class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-slate-300 dark:hover:bg-slate-800"
-    >
-      <MdiSitemap />
-      <span class="sr-only">Sitemap</span>
-    </a>
+<footer class="border-t border-slate-200 dark:border-slate-800 mt-16 pt-8">
+  <div class="grid md:grid-cols-3 gap-8 mb-8">
+    
+    <!-- About Section -->
+    <div class="space-y-3">
+      <h3 class="text-lg font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
+        Wilmar Sepúlveda
+      </h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400">
+        Lead Data Scientist especializado en MLOps, Machine Learning e IA para sectores financiero y asegurador.
+      </p>
+      <div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+        <MdiEmail class="w-4 h-4" />
+        <a href="mailto:wilmar.sepulveda2@gmail.com" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+          wilmar.sepulveda2@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="space-y-3">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+        Enlaces Rápidos
+      </h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="/" class="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            🏠 Home
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            👤 About
+          </a>
+        </li>
+        <li>
+          <a href="/blog" class="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            📝 Blog
+          </a>
+        </li>
+        <li>
+          <a href="/series" class="text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            📚 Series
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="space-y-3">
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+        Tech Stack
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-2 py-1 text-xs bg-primary-500/10 text-primary-700 dark:text-primary-300 rounded">Python</span>
+        <span class="px-2 py-1 text-xs bg-secondary-500/10 text-secondary-700 dark:text-secondary-300 rounded">R</span>
+        <span class="px-2 py-1 text-xs bg-accent-500/10 text-accent-700 dark:text-accent-300 rounded">Docker</span>
+        <span class="px-2 py-1 text-xs bg-primary-500/10 text-primary-700 dark:text-primary-300 rounded">AWS</span>
+        <span class="px-2 py-1 text-xs bg-secondary-500/10 text-secondary-700 dark:text-secondary-300 rounded">ML</span>
+        <span class="px-2 py-1 text-xs bg-accent-500/10 text-accent-700 dark:text-accent-300 rounded">MLOps</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-800">
+    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 md:mb-0">
+      &copy; {today.getFullYear()} Wilmar Sepúlveda. Made with 💜 using Astro
+    </p>
+    <div class="flex items-center space-x-1">
+      <a
+        href={TWITTER_HANDLE}
+        target="_blank"
+        class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-gradient-to-br hover:from-primary-500 hover:to-accent-500 hover:text-white transition-all duration-300 hover:scale-110"
+        aria-label="LinkedIn"
+      >
+        <MdiTwitter />
+      </a>
+      <a
+        href={GITHUB_HANDLE}
+        target="_blank"
+        class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-gradient-to-br hover:from-secondary-500 hover:to-primary-600 hover:text-white transition-all duration-300 hover:scale-110"
+        aria-label="GitHub"
+      >
+        <MdiGithub />
+      </a>
+      <a
+        href="/rss.xml"
+        target="_blank"
+        class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-gradient-to-br hover:from-accent-500 hover:to-primary-500 hover:text-white transition-all duration-300 hover:scale-110"
+        aria-label="RSS Feed"
+      >
+        <MdiRss />
+      </a>
+      <a
+        href="/sitemap-index.xml"
+        target="_blank"
+        class="w-8 h-8 flex items-center justify-center rounded-md p-1.5 hover:bg-gradient-to-br hover:from-primary-600 hover:to-secondary-500 hover:text-white transition-all duration-300 hover:scale-110"
+        aria-label="Sitemap"
+      >
+        <MdiSitemap />
+      </a>
+    </div>
   </div>
 </footer>
