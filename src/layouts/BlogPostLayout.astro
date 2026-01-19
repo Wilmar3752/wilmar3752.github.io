@@ -4,9 +4,11 @@ import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import TableOfContent from "../components/TableOfContent.astro";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import ReadingProgressBar from "../components/ReadingProgressBar";
 import { Image } from "astro:assets";
 import SeriesCard from "../components/SeriesCard.astro";
 import PostComments from "../components/PostComments.astro";
+import { getTagColor } from "../utils/tagColors";
 
 
 type Blog = CollectionEntry<"blog">["data"];
@@ -47,38 +49,46 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
 />
 
 <BaseLayout title={title} description={description} postMeta={{ pubDate, tags }}>
+  <ReadingProgressBar client:load />
   <div
-    class="prose prose-slate max-w-none prose-headings:scroll-my-20 prose-a:underline-offset-2 prose-a:decoration-blue-600 prose-img:rounded-lg dark:prose-invert"
+    class="prose prose-slate max-w-none prose-headings:scroll-my-20 prose-a:underline-offset-2 prose-a:decoration-primary-600 prose-img:rounded-xl prose-img:shadow-lg prose-img:hover:shadow-2xl prose-img:transition-all prose-img:duration-300 prose-img:hover:scale-[1.02] dark:prose-invert"
   >
     <h1>{title}</h1>
     <div class="font-semibold text-xs uppercase space-y-2">
-      <div class="flex flex-wrap items-center space-x-1">
-        <span>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-primary-500/20 to-accent-500/20 dark:from-primary-500/30 dark:to-accent-500/30 rounded-full border border-primary-500/30">
+          <svg class="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-primary-700 dark:text-primary-300">{readingTime}</span>
+        </span>
+        <span class="text-slate-600 dark:text-slate-400">
           Published on <FormattedDate date={pubDate} />
         </span>
         {
           updatedDate && (
             <>
-              <span>{"•"}</span>
-              <span>
+              <span class="text-slate-400">{"•"}</span>
+              <span class="text-slate-600 dark:text-slate-400">
                 Updated on <FormattedDate date={updatedDate} />
               </span>
             </>
           )
         }
-        <span>{"•"}</span>
-        <span>{readingTime}</span>
       </div>
       <div class="flex space-x-2 items-center">
         {
-          tags.map((tag) => (
-            <a
-              href={`/tags/${tag.slice(1)}`}
-              class="no-underline bg-slate-300 hover:bg-slate-400 dark:bg-slate-700 dark:hover:bg-slate-600 p-1 px-4 rounded-full"
-            >
-              {tag}
-            </a>
-          ))
+          tags.map((tag) => {
+            const colors = getTagColor(tag.slice(1));
+            return (
+              <a
+                href={`/tags/${tag.slice(1)}`}
+                class={`no-underline ${colors.bg} ${colors.text} hover:scale-105 border ${colors.border} p-1 px-3 rounded-full transition-all duration-200 font-medium text-sm shadow-sm hover:shadow-md`}
+              >
+                {tag}
+              </a>
+            );
+          })
         }
       </div>
     </div>
@@ -121,17 +131,24 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
     // Copy button
     const copyButton = document.createElement("button");
     copyButton.className =
-      "p-1 px-2 rounded-md text-slate-300 text-xs bg-slate-800 hover:bg-slate-700";
-    copyButton.innerHTML = "Copy";
+      "group relative overflow-hidden px-3 py-1.5 rounded-md text-white text-xs font-semibold bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105";
+    copyButton.innerHTML = `
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        Copy
+      </span>
+    `;
 
     // Header title
     const titleSpan = document.createElement("span");
-    titleSpan.className = "text-blue-400";
+    titleSpan.className = "text-primary-400 font-semibold";
 
     // Header div
     const headerDiv = document.createElement("div");
     headerDiv.className =
-      "flex w-full bg-slate-950 border-b-[0.5px] border-blue-400 rounded-t-lg mt-10 text-base items-center justify-between py-2 px-4";
+      "flex w-full bg-gradient-to-br from-slate-900 to-slate-950 border-b-2 border-primary-500/50 rounded-t-lg mt-10 text-base items-center justify-between py-3 px-4 shadow-lg";
 
     // Current title
     const titleDiv = codeBlock.querySelector("div[data-rehype-pretty-code-title]");
@@ -158,10 +175,25 @@ const series = (await getCollection("series")).find((s) => s.data.id === seriesI
     const code = block.querySelector("code") as HTMLElement;
     const text = code.innerText as string;
     await navigator.clipboard.writeText(text);
-    button.innerText = "Copied!";
+    
+    button.innerHTML = `
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Copied!
+      </span>
+    `;
 
     setTimeout(() => {
-      button.innerText = "Copy";
-    }, 750);
+      button.innerHTML = `
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          Copy
+        </span>
+      `;
+    }, 2000);
   }
 </script>

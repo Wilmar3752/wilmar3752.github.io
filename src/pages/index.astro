@@ -12,42 +12,62 @@ import { TWITTER_HANDLE, GITHUB_HANDLE } from "../consts";
 const posts = await getCollection("blog");
 const featuredPosts = posts.filter((post) => post.data.featured);
 const featuredSeries = (await getCollection("series")).filter((s) => s.data.featured);
+
+// Stats
+const totalPosts = posts.filter((post) => !post.data.planned).length;
+const totalTags = new Set(posts.flatMap((post) => post.data.tags)).size;
+const totalSeries = (await getCollection("series")).length;
 ---
 
 <BaseLayout title="Home">
-  <main>
-    <section id="hero">
+  <main class="space-y-10">
+    <section id="hero" class="animate-fade-in-scale">
       <div class="flex flex-1 flex-col sm:pr-6">
-        <h1>👋 Hello!</h1>
-        <p>
-          <span class="text-2xl">I am <strong>Wilmar</strong></span>,
-          Welcome to my blog! I am from Colombia 🇨🇴. I'm a statistician with experience in 
-          <span class="font-black">R</span>, 
-          <span class="font-black">Python</span>, 
-          <span class="font-black">Git</span>, 
-          <span class="font-black">Docker</span>, 
-          and <span class="font-black">AWS</span>. As an enthusiastic learner, I am passionate about MLOps, data engineering, and research. 
-          I also serve as the Data Scientist Leader at R5, an insurtech company, where I have developed machine learning models for the insurance and credit sectors.
-          
+        <h1>👋 Hola!</h1>
+        <p class="text-2xl mb-4">
+          Soy <strong class="text-3xl bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">Wilmar Sepúlveda</strong>
         </p>
+        <p class="text-lg leading-relaxed">
+          <strong class="text-primary-600 dark:text-primary-400">Lead Data Scientist</strong> con más de 6 años de experiencia construyendo soluciones de 
+          <span class="font-bold text-accent-600 dark:text-accent-400">Machine Learning</span> e 
+          <span class="font-bold text-secondary-600 dark:text-secondary-400">Inteligencia Artificial</span> para los sectores 
+          <span class="font-semibold">financiero y asegurador</span>.
+        </p>
+        
+        <div class="my-6 p-4 rounded-xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 border border-primary-500/20">
+          <p class="text-base leading-relaxed">
+            🚀 Actualmente trabajo para <strong class="text-primary-600 dark:text-primary-400">ASSA</strong> (la aseguradora más grande de Centroamérica) 
+            en colaboración con <strong class="text-accent-600 dark:text-accent-400">McKinsey & Company</strong>, 
+            desarrollando <span class="font-semibold">Feature Stores</span> y sistemas de <span class="font-semibold">precios dinámicos</span> con ML.
+          </p>
+        </div>
+
+        <p class="text-base leading-relaxed">
+          De <strong>Colombia 🇨🇴</strong>, especializado en 
+          <span class="font-semibold text-primary-600 dark:text-primary-400">MLOps</span>, 
+          <span class="font-semibold text-accent-600 dark:text-accent-400">Data Engineering</span>, e 
+          <span class="font-semibold text-secondary-600 dark:text-secondary-400">Investigación</span>. 
+          También soy <strong>docente en Universidad Libre</strong> 👨‍🏫, donde enseño Machine Learning y Estadística.
+        </p>
+        
         <div class="social-wrapper">
-          <div class="social-links">Social Links:</div>
-          <a href={TWITTER_HANDLE} target="_blank" class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700">
+          <div class="social-links">Conectemos:</div>
+          <a href={TWITTER_HANDLE} target="_blank" class="group relative overflow-hidden inline-flex items-center justify-center space-x-2 py-2 px-4 rounded-lg bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
             <MdiTwitter />
-            <span>LinkedIn</span>
+            <span class="font-medium">LinkedIn</span>
           </a>
-          <a href={GITHUB_HANDLE} target="_blank" class="inline-flex items-center justify-center space-x-2 py-2 px-3 rounded-md bg-slate-300 hover:bg-slate-400 dark:bg-slate-800 dark:hover:bg-slate-700">
+          <a href={GITHUB_HANDLE} target="_blank" class="group relative overflow-hidden inline-flex items-center justify-center space-x-2 py-2 px-4 rounded-lg bg-gradient-to-r from-secondary-600 to-primary-600 hover:from-secondary-700 hover:to-primary-700 text-white shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
             <MdiGithub />
-            <span>GitHub</span>
+            <span class="font-medium">GitHub</span>
           </a>
         </div>
-        <p>
-          Read more about me on the
+        <p class="mt-4">
+          Conoce más sobre mi trayectoria en la
           <LinkButton
             className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
             href="/about"
           >
-            About page
+            página About
           </LinkButton>
         </p>
       </div>
@@ -55,13 +75,13 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
     </section>
 
       {featuredPosts.length > 0 && (
-        <div class="space-y-5">
+        <div class="space-y-5 animate-fade-in delay-200">
           <h1 class="text-3xl text-black dark:text-white">📜 Featured Posts</h1>
           <PostsList posts={featuredPosts} />
         </div>
       )}
       {featuredSeries.length > 0 && (
-        <div class="space-y-5">
+        <div class="space-y-5 animate-fade-in delay-300">
           <h1 class="text-3xl text-black dark:text-white">Featured Series</h1>
           <SeriesList series={featuredSeries} />
         </div>
@@ -75,7 +95,49 @@ const featuredSeries = (await getCollection("series")).filter((s) => s.data.feat
   /* ===== Hero Section ===== */
   #hero {
     @apply flex sm:flex-row sm:pb-12 sm:pt-12 flex-col items-end pb-12 pt-12;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
   }
+  
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite reverse;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(30px, -30px) scale(1.1);
+    }
+  }
+  
+  #hero > * {
+    position: relative;
+    z-index: 1;
+  }
+  
   #hero h1 {
     @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
   }

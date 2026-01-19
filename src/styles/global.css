@@ -10,12 +10,209 @@
   font-display: swap;
 }
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade-in animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.animate-in {
+  animation: rotateIn 0.4s ease-out forwards;
+}
+
+/* Stagger delay utilities */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Custom gradient utilities */
+:root {
+  --gradient-primary: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+  --gradient-accent: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-500;
+}
+
+/* Gradient background utility */
+.gradient-bg {
+  background: var(--gradient-primary);
+}
+
+/* Card hover effect utility */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border border-white/20 dark:border-slate-700/20;
+}
+
+/* Prose customizations for better blockquotes */
+.prose blockquote {
+  @apply border-l-4 border-primary-500 bg-gradient-to-r from-primary-500/10 to-transparent rounded-r-lg shadow-md;
+  font-style: normal;
+}
+
+.dark .prose blockquote {
+  @apply from-primary-500/20;
+}
+
+.prose blockquote p {
+  @apply text-slate-700;
+}
+
+.dark .prose blockquote p {
+  @apply text-slate-300;
+}
+
+/* Better list styles */
+.prose ul {
+  @apply list-none pl-0;
+}
+
+.prose ul > li {
+  @apply relative pl-7 mb-2;
+}
+
+.prose ul > li::before {
+  content: '';
+  @apply absolute left-0 top-2 w-2 h-2 rounded-full bg-gradient-to-br from-primary-500 to-accent-500;
+}
+
+.prose ol > li {
+  @apply mb-2 pl-2;
+}
+
+.prose ol > li::marker {
+  @apply text-primary-600 font-bold;
+}
+
+.dark .prose ol > li::marker {
+  @apply text-primary-400;
+}
+
+/* Better link styles */
+.prose a {
+  @apply relative inline-block text-primary-600 font-medium no-underline;
+  transition: all 0.3s ease;
+}
+
+.dark .prose a {
+  @apply text-primary-400;
+}
+
+.prose a::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-accent-500;
+  transition: width 0.3s ease;
+}
+
+.prose a:hover::after {
+  @apply w-full;
+}
+
+.prose a:hover {
+  @apply text-accent-600;
+}
+
+.dark .prose a:hover {
+  @apply text-accent-400;
+}
+
+/* Better table styles */
+.prose table {
+  @apply w-full border-collapse rounded-lg overflow-hidden shadow-lg;
+}
+
+.prose thead {
+  @apply bg-gradient-to-r from-primary-600 to-accent-600 text-white;
+}
+
+.prose th {
+  @apply px-4 py-3 text-left font-semibold;
+}
+
+.prose td {
+  @apply px-4 py-3 border-b border-slate-200;
+}
+
+.dark .prose td {
+  @apply border-slate-700;
+}
+
+.prose tbody tr {
+  @apply hover:bg-primary-50 transition-colors duration-200;
+}
+
+.dark .prose tbody tr {
+  @apply hover:bg-primary-900/10;
+}
+
 div[data-rehype-pretty-code-fragment] {
   @apply space-y-0;
 }
 
 div[data-rehype-pretty-code-fragment] pre {
-  @apply p-0 py-2 rounded-t-none rounded-lg overflow-x-auto bg-slate-950;
+  @apply p-0 py-2 rounded-t-none rounded-lg overflow-x-auto;
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
 }
 
 div[data-rehype-pretty-code-fragment] code {
@@ -34,5 +231,5 @@ div[data-rehype-pretty-code-fragment] .line {
 }
 
 div[data-rehype-pretty-code-fragment] .highlighted {
-  @apply border-blue-400 bg-blue-400/20;
+  @apply border-primary-500 bg-primary-500/20;
 }

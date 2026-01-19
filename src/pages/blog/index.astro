@@ -11,8 +11,17 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout title="All posts">
-
-  <PostsList posts={posts} />
+  <div class="space-y-8 animate-fade-in">
+    <div class="space-y-3">
+      <h1 class="text-4xl font-bold bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent">
+        All Posts
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Explore all my articles about data science, statistics, and machine learning.
+      </p>
+    </div>
+    <PostsList posts={posts} />
+  </div>
 </BaseLayout>
 
 
