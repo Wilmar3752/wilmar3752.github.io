@@ -7,7 +7,52 @@ function isActive(path: string): boolean {
   }
   return currentPath.startsWith(path);
 }
+
 ---
+
+<script>
+  const btnMenu = document.getElementById("btnMenu");
+  const hamburgerIcon = document.getElementById("hamburgerIcon");
+  const closeIcon = document.getElementById("closeIcon");
+  const homeLink = document.getElementById("homeLink");
+  const aboutLink = document.getElementById("aboutLink");
+  const blogLink = document.getElementById("blogLink");
+
+  let toggle = false;
+  
+  if (btnMenu && hamburgerIcon && closeIcon) {
+    btnMenu.addEventListener("click", () => {
+      toggle = !toggle;
+      if (toggle) {
+        hamburgerIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+        document.getElementById("overlay")?.classList.remove("hidden");
+      } else {
+        hamburgerIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        document.getElementById("overlay")?.classList.add("hidden");
+      }
+    });
+    
+    if (homeLink) {
+      homeLink.addEventListener("click", () => {
+        toggle = false;
+      });
+    }
+    
+    if (aboutLink) {
+      aboutLink.addEventListener("click", () => {
+        toggle = false;
+      });
+    }
+    
+    if (blogLink) {
+      blogLink.addEventListener("click", () => {
+        toggle = false;
+      });
+    }
+  }
+</script>
 
 <style>
   nav {
@@ -78,13 +123,35 @@ function isActive(path: string): boolean {
   }
 </style>
 
-<nav class="bg-slate-100 dark:bg-slate-900">
-  <ul>
-    <li><a href="/" class={`text-slate-900 dark:text-white ${isActive('/') ? 'active' : ''}`}>Home</a></li>
-    <li><a href="/about/" class={`text-slate-900 dark:text-white ${isActive('/about') ? 'active' : ''}`}>About</a></li>
-    <li><a href="/blog/" class={`text-slate-900 dark:text-white ${isActive('/blog') ? 'active' : ''}`}>Blog</a></li>
-  </ul>
-</nav>
+<div>
+  <section>
+    <nav class="hidden md:block">
+      <ul>
+        <li><a href="/" class={`text-slate-900 dark:text-white ${isActive('/') ? 'active' : ''}`}>Home</a></li>
+        <li><a href="/about/" class={`text-slate-900 dark:text-white ${isActive('/about') ? 'active' : ''}`}>About</a></li>
+        <li><a href="/blog/" class={`text-slate-900 dark:text-white ${isActive('/blog') ? 'active' : ''}`}>Blog</a></li>
+      </ul>
+    </nav>
+
+    <div id="btnMenu" class="block md:hidden cursor-pointer">
+      <div id="hamburgerIcon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-text-align-justify-icon lucide-text-align-justify"><path d="M3 5h18"/><path d="M3 12h18"/><path d="M3 19h18"/></svg></div>
+      <div id="closeIcon" class="hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </div>
+          
+    </div>
+  </section>
+  <section class="hidden absolute inset-0 z-50 h-screen w-[calc(100%-18rem)] bg-slate-100 dark:bg-slate-900" id="overlay">
+    <nav class="bg-slate-100 dark:bg-slate-900">
+      <ul>
+        <li><a href="/" class={`text-slate-900 dark:text-white ${isActive('/') ? 'active' : ''}`} id="homeLink">Home</a></li>
+        <li><a href="/about/" class={`text-slate-900 dark:text-white ${isActive('/about') ? 'active' : ''}`} id="aboutLink">About</a></li>
+        <li><a href="/blog/" class={`text-slate-900 dark:text-white ${isActive('/blog') ? 'active' : ''}`} id="blogLink">Blog</a></li>
+      </ul>
+    </nav>
+  </section>
+</div>
+
 
 
 
