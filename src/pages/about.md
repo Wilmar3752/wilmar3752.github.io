@@ -32,13 +32,13 @@ Actualmente trabajo para **ASSA** (la empresa de seguros más grande de Centroam
 ### 🚀 Lead Data Scientist — Coderland
 **Marzo 2025 – Presente** | Tecnología
 
-Trabajando con **ASSA** y **McKinsey & Company**:
+Consultoría para **ASSA**, la aseguradora más grande de Centroamérica:
 
-- 🏗️ Creación de **Feature Store** y sistemas de **precios dinámicos** con Machine Learning
-- 📊 Modelos de **predicción de churn** y análisis de **Customer Lifetime Value (LTV)**
-- 💰 Modelos predictivos para **reducción de morosidad** y optimización de cobranzas
-- 🚗 Estimación de **costos de piezas** en reclamos de auto con ML
-- 📈 **Análisis de supervivencia** para predecir tiempo de permanencia en pólizas de vida
+- 💰 Rediseño completo del **modelo de pricing** en seguros de Auto combinando ML y optimización, estimando un incremento anual de **300K USD** en revenue
+- 📊 Mejora del proceso de **cobros** en ramos de Auto, Salud y Vida mediante ML y análisis estadístico, incrementando significativamente la recaudación
+- 🏗️ Construcción desde cero de la **arquitectura de datos** con pipelines ETL en arquitectura medallón sobre **Databricks**
+- 🔍 Solución de **web scraping** para benchmark de precios en el mercado, apoyando decisiones de pricing competitivo
+- 📈 Modelos de **predicción de churn** en ramo de vida con análisis de supervivencia y estimación de **LTV**
 
 </div>
 
@@ -161,29 +161,39 @@ Fundamentos sólidos en teoría de probabilidad, inferencia estadística y anál
 
 <div class="grid md:grid-cols-2 gap-4">
 
-<a href="https://github.com/wilmar3752/meli_scrapper" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-all duration-300 hover:shadow-lg">
-  <h4 class="font-bold text-lg mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">🛒 Web Scraping MELI</h4>
-  <p class="text-sm text-slate-600 dark:text-slate-400">Web scraping de Mercado Libre con Docker y CI/CD</p>
+<a href="https://github.com/Wilmar3752/pdist" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">📦 pdist</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Paquete Python para identificar automáticamente la mejor distribución de probabilidad. Implementa pruebas KS, Anderson-Darling y Chi-cuadrado, criterios AIC/BIC y visualizaciones.</p>
 </a>
 
-<a href="https://github.com/wilmar3752/ETL_scraper" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-accent-500 transition-all duration-300 hover:shadow-lg">
-  <h4 class="font-bold text-lg mb-2 group-hover:text-accent-600 dark:group-hover:text-accent-400">🚗 CAR ETL</h4>
-  <p class="text-sm text-slate-600 dark:text-slate-400">Pipeline ETL con Python, AWS S3 y GitHub Actions</p>
+<a href="https://github.com/Wilmar3752/itseries" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-accent-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-accent-600 dark:group-hover:text-accent-400">📊 itseries</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Paquete R para analizar procesos estocásticos con espaciado irregular — desarrollado durante la investigación de maestría en Estadística.</p>
 </a>
 
-<a href="https://github.com/wilmar3752/car_predict" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-secondary-500 transition-all duration-300 hover:shadow-lg">
-  <h4 class="font-bold text-lg mb-2 group-hover:text-secondary-600 dark:group-hover:text-secondary-400">🤖 CAR PREDICT</h4>
-  <p class="text-sm text-slate-600 dark:text-slate-400">ML con DVC, FastAPI y Docker</p>
+<a href="https://github.com/Wilmar3752/car_predict" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-secondary-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-secondary-600 dark:group-hover:text-secondary-400">🤖 car_predict</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Pipeline ML end-to-end para predicción de precios de autos con versionado de modelos, API REST y despliegue contenerizado.</p>
 </a>
 
-<a href="https://github.com/wilmar3752/itseries" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-all duration-300 hover:shadow-lg">
-  <h4 class="font-bold text-lg mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">📊 ITSERIES</h4>
-  <p class="text-sm text-slate-600 dark:text-slate-400">Paquete R para procesos estocásticos irregulares</p>
+<a href="https://github.com/Wilmar3752/ETL_scraper" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">🚗 ETL_scraper</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Pipeline ETL automatizado que extrae datos de vehículos, los procesa con Python y los carga a AWS S3 vía CI/CD.</p>
 </a>
 
-<a href="https://github.com/wilmar3752" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-secondary-500 transition-all duration-300 hover:shadow-lg">
-  <h4 class="font-bold text-lg mb-2 group-hover:text-secondary-600 dark:group-hover:text-secondary-400">🖥️ CAR PREDICT APP</h4>
-  <p class="text-sm text-slate-600 dark:text-slate-400">Web app con Streamlit y base de datos</p>
+<a href="https://github.com/Wilmar3752/cluster-app" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-accent-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-accent-600 dark:group-hover:text-accent-400">🧩 cluster-app</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">App web interactiva para segmentación de clientes de tarjetas de crédito con aprendizaje no supervisado, desplegada en HuggingFace Spaces.</p>
+</a>
+
+<a href="https://github.com/Wilmar3752/meli_scrapper" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-secondary-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-secondary-600 dark:group-hover:text-secondary-400">🛒 meli_scrapper</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Web scraper de todos los productos publicados en Mercado Libre, contenerizado y desplegado con CI/CD.</p>
+</a>
+
+<a href="https://github.com/Wilmar3752/pptex" target="_blank" class="group rounded-xl p-4 bg-slate-200/50 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 hover:border-primary-500 transition-all duration-300 hover:shadow-lg">
+  <h4 class="font-bold text-lg mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400">📄 pptex</h4>
+  <p class="text-sm text-slate-600 dark:text-slate-400">Toolkit basado en Docker para generar presentaciones y reportes LaTeX en cualquier OS — sin necesidad de instalar LaTeX. Soporta pdflatex, xelatex, lualatex y modo watch.</p>
 </a>
 
 </div>
